@@ -24,12 +24,19 @@ if __name__ == '__main__':
     #buscamos cuantas imagenes tiene cada directorio y almacenamos en un diccionario
     imagenes_dict = {}
     temp = []
+    cont = 1
     for i in sub_directorios_imagenes:
         for f in os.listdir(i): 
             if os.path.isfile(i+'/'+f):
-                temp.append(i+'/'+f)    
+                if f.split('.')[-1].lower() == 'jpg':
+                    os.rename(i+'/'+f, i+'/'+str(cont)+'.jpg')
+                if f.split('.')[-1].lower() == 'jpeg':
+                    os.rename(i+'/'+f, i+'/'+str(cont)+'.jpeg')
+                cont += 1
+                temp.append(i+'/'+str(cont))    
         imagenes_dict[i] = temp
         temp = []
+        cont = 0
     
     #total de imagenes
     suma = 0

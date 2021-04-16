@@ -26,6 +26,7 @@ if __name__ == '__main__':
     imagenes_dict = {}
     temp = []
     cont = 1
+    #tambien se renombran las imagenes dentro del dataset, asignando una numeracion empezando desde el cero
     for i in sub_directorios_imagenes:
         for f in os.listdir(i): 
             if os.path.isfile(i+'/'+f):

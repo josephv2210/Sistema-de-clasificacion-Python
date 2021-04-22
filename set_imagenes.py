@@ -4,11 +4,11 @@ import os
 #definimos esta funcion para buscar directorios dentro del dataset 
 #esta funcion recibe como parametros una lista para almacenar las rutas de los dir y la ruta
 #esta funcion usa la recursividad para buscar en todos los subdirectorios y retorna la lista
-def busca_directorios(num, pat):                
+def busca_directorios(lista, pat):                
     for f in os.listdir(pat): 
         if os.path.isdir(pat+'/'+f):
             num.append(pat+'/'+f)
-            busca_directorios(num, pat+'/'+f)        
+            busca_directorios(lista, pat+'/'+f)        
     return num
 
 #verifica que se este ejecutando el script
@@ -30,10 +30,11 @@ if __name__ == '__main__':
     for i in sub_directorios_imagenes:
         for f in os.listdir(i): 
             if os.path.isfile(i+'/'+f):
-                if f.split('.')[-1].lower() == 'jpg':
-                    os.rename(i+'/'+f, i+'/'+str(cont)+'.jpg')
-                if f.split('.')[-1].lower() == 'jpeg':
-                    os.rename(i+'/'+f, i+'/'+str(cont)+'.jpeg')
+                # Comentar despues de ejecutado una vez
+                # if f.split('.')[-1].lower() == 'jpg':
+                #     os.rename(i+'/'+f, i+'/'+str(cont)+'.jpg')
+                # if f.split('.')[-1].lower() == 'jpeg':
+                #     os.rename(i+'/'+f, i+'/'+str(cont)+'.jpeg')
                 cont += 1
                 temp.append(i+'/'+str(cont))    
         imagenes_dict[i] = temp
